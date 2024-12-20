@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Weeknd Albums</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        
+        .top-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .top-header h1 {
+            margin: 0;
+            font-size: 3em;
+            color: rgba(255, 0, 0, 0.76);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+    
+        .navoo nav ul {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .navoo nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .navoo nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navoo nav ul li a:hover,
+        .navoo nav ul li a.active {
+            color: red;
+        }
+
+      
+        .header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
+            overflow: hidden;
+        }
+
+        .header video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .header-content h1 {
+            color: rgba(255, 0, 0, 0.76);
+            font-size: 5em;
+            margin: 0;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .album-name a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #14bc81;
+            color: #fff;
+            font-size: 1em;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .album-name a:hover {
+            background-color: red;
+        }
+
+       
+        .container {
+            padding: 40px 20px;
+            background-color: #111;
+            text-align: center;
+        }
+
+        .container h2 {
+            font-size: 2em;
+            color: rgba(255, 0, 0, 0.76);
+            margin-bottom: 20px;
+        }
+
+        .album-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            font-size: 1em;
+        }
+
+       
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        #box1:hover { box-shadow: 0 8px 16px rgba(255, 0, 0, 0.6); }
+        #box2:hover { box-shadow: 0 8px 16px rgba(0, 183, 255, 0.6); }
+        #box3:hover { box-shadow: 0 8px 16px rgba(128, 128, 128, 0.6); }
+        #box4:hover { box-shadow: 0 8px 16px rgba(7, 10, 186, 0.6); }
+        #box5:hover { box-shadow: 0 8px 16px rgba(0, 255, 0, 0.6); }
+        #box6:hover { box-shadow: 0 8px 16px rgba(255, 255, 255, 0.6); }
+        #box7:hover { box-shadow: 0 8px 16px rgba(255, 0, 0, 0.6); }
+        #box8:hover { box-shadow: 0 8px 16px rgba(247, 105, 3, 0.6); }
+        #box9:hover { box-shadow: 0 8px 16px rgba(255, 255, 255, 0.6); }
+
+        #box1 { background-image: url("OIP.jpg"); }
+        #box2 { background-image: url("OIP (1).jpg"); }
+        #box3 { background-image: url("R.jpg"); }
+        #box4 { background-image: url("OIP (2).jpg"); }
+        #box5 { background-image: url("OIP (3).jpg"); }
+        #box6 { background-image: url("R (1).jpg"); }
+        #box7 { background-image: url("OIP (4).jpg"); }
+        #box8 { background-image: url("th.jpg"); }
+        #box9 { background-image: url("photo_5861944844061099924_x.jpg"); }
+
+        
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 20px 0;
+            color: #f00;
+            font-size: 0.8em;
+        }
+
+        .footer-social-icons a {
+            margin: 0 8px;
+            display: inline-block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .footer-social-icons a img {
+            width: 30px;
+            height: 30px;
+            filter: brightness(0) invert(1) sepia(1) saturate(1000%) hue-rotate(0deg);
+            background-color: #f00;
+            border-radius: 50%;
+        }
+
+        .footer-social-icons a:hover img {
+            transform: scale(1.2);
+            filter: brightness(0) invert(1) sepia(1) saturate(1000%) hue-rotate(-10deg);
+        }
+
+        .footer-text a {
+            color: #f00;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            color: crimson;
+            transition: color 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-header">
+        <h1>The Weeknd</h1>
+        <div class="navoo">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Discography</a></li>
+                    <li><a href="biography.html">Biography</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="header">
+        <video src="y2mate.com - The Weeknd  São Paulo feat Anitta Official Music Video_720p.mp4" autoplay muted loop></video>
+        <div class="header-content">
+            <h1>The Weeknd</h1>
+            <div class="album-name">
+                <h1>Hurry Up Tomorrow</h1>
+                <h3>Sao Paulo - Anitta</h3>
+                <a href="https://open.spotify.com/" target="_blank">Listen on Spotify</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="container">
+        <h2>Discography</h2>
+        <div class="album-list">
+            <div id="box1" class="box" onmouseover="playAudio('The_Weeknd_-_After_Hours.mp3')" onmouseout="stopAudio()"></div>
+            <div id="box2" class="box" onmouseover="playAudio('y2mate.com - The Weeknd  Is There Someone Else.mp3')" onmouseout="stopAudio()"></div>
+            <div id="box3" class="box" onmouseover="playAudio('y2mate.com - The Weeknd  The Hills.mp3')" onmouseout="stopAudio()"></div>
+            <div id="box4" class="box" onmouseover="playAudio('y2mate.com - The Weeknd  Starboy Audio ft Daft Punk.mp3')" onmouseout="stopAudio()"></div>
+            <div id="box5" class="box" onmouseover="playAudio('y2mate.com - Professional.mp3')" onmouseout="stopAudio()"></div>
+            <div id="box6" class="box" onmouseover="playAudio('e of.mp3')" onmouseout="stopAudio()"></div>
+            <div id="box7" class="box" onmouseover="playAudio('y2mate.com - The Weeknd  São Paulo feat Anitta Official Music Video_720p.mp4')" onmouseout="stopAudio()"></div>
+            <div id="box8" class="box" onmouseover="playAudio('y2mate.com - The Weeknd  Call Out My Name Official Audio.mp3')" onmouseout="stopAudio()"></div>
+            <div id="box9" class="box" onmouseover="playAudio('y2mate.com - The Weeknd  House Of Balloons  Glass Table Girls.mp3')" onmouseout="stopAudio()"></div>
+
+        </div>
+    </section>
+
+    <footer>
+      
+        <div class="footer-text">
+            <p>&copy; 2024 The Weeknd Discography. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let audio;
+
+        function playAudio(src) {
+            stopAudio();
+            audio = new Audio(src);
+            audio.play();
+        }
+
+        function stopAudio() {
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        }
+    </script>
+</body>
+</html>
